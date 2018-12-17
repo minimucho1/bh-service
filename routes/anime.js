@@ -98,4 +98,48 @@ router.get('/id/:id', function(req, res) {
     res.end();
 });
 
+
+/* GET /anime?sort=rank */
+router.get('/anime?sort=rank', function(req, res, next, rank){
+
+    // var array = [];
+
+    // for (var key in mockData) {
+    //     array.push(anime[key]);
+      
+    // }
+    
+    // array.sort(function(a, b){
+    //     return b.score - a.score;
+    // });
+    
+    // var score = 1;
+    // for (var i = 0; i < array.length; i++) {
+    //   if (i > 0 && array[i].rank < array[i - 1].rank) {
+    //     score++;
+    //   }
+    //     array[i].rank = rank;
+    // }
+    
+anime.sort(function(a, b){
+    return b - a;
+});
+var rank = 1;
+for (var i = 0; i < anime.length; i++){
+    if(i > 0 && anime[i].rank < anime[i - 1].score){
+        rank++
+    }
+    anime[i].rank = rank;
+}
+
+    console.log(anime);
+});
+
+
+
+
+
+
+
+
 module.exports = router;
